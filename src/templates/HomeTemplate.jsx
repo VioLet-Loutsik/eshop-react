@@ -1,10 +1,17 @@
 import React from 'react'
+import { NavLink } from "react-router-dom";
 
-const HomeTemplate = ({title, description, images, category}) => {
+const HomeTemplate = ({ category }) => {
   return (
-    <div>
-        <p>{category}</p>
-    </div>
+ <div>
+    <ul>
+      <li><NavLink to={`/mensclothing/${category}`}>Men's Clothing</NavLink></li>
+      <li><NavLink to={`/womansclothing/${category}`}>Woman's clothing</NavLink></li>
+      <li><NavLink to={`/jewelery/${category}`}>Electronic</NavLink></li>
+      <li><NavLink to={`/electronic/${category}`}>Jewelery</NavLink></li>        
+
+    </ul>
+  </div>
   )
 }
 

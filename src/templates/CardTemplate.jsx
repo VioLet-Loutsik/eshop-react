@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-
+import './cardTemplate.css'
 
 function CardTemplate({ title, price, description, image, id }) {
   return (
@@ -17,3 +17,4 @@ function CardTemplate({ title, price, description, image, id }) {
 }
 
 export default CardTemplate;
+
