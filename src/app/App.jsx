@@ -4,12 +4,9 @@ import React from "react";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import MensClothing from '../products/MensClothing';
-import Jewelery from '../products/Jewelery';
-import WomansClothing from '../products/WomansClothing';
-import Electronic from '../products/Electronic';
-
-// import Products from "../pages/Products";
+import SingleProduct from "../products/SingleProduct";
+import Basket, { BasketTemplate } from "../pages/Basket";
+import DescriptionProduct from "../pages/DescriptionProduct";
 
 function App() {
   return (
@@ -18,10 +15,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/mensclothing/:category" element={<MensClothing />} />
-          <Route path="/womansclothing/:category" element={<WomansClothing/>} />
-          <Route path="/jewelery/:category" element={<Jewelery />} />
-          <Route path="/electronic/:category" element={<Electronic />} />
+          <Route path="/product/:category" element={<SingleProduct />} />
+          <Route path="/product/:category/:id" element={<DescriptionProduct />} />          
+          <Route path="/basket" element={<Basket />} />
         </Routes>
         <Footer />
       </BrowserRouter>
