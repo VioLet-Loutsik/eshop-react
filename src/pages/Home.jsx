@@ -14,7 +14,7 @@ const Home = () => {
       setData(response.data);
     });
   }, [baseURL]);
-console.log(data);
+// console.log(data);
   const categoryProduct = data
     .map((e) => {
     return <HomeTemplate category={e} key={e.id}/>

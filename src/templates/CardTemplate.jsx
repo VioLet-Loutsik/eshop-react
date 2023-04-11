@@ -8,7 +8,7 @@ import { NavLink, Link } from "react-router-dom";
 
 function CardTemplate({ title, price, image, id, description, category, onSelect }) {
   // const arrayBasket = []; // сначала обьявляем массив
-console.log(id);
+// console.log(id);
   const objectBasket = { title, image, price, id };
   const addProduct = () => {
     if (onSelect && typeof onSelect === "function") {

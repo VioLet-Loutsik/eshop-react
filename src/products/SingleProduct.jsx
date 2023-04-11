@@ -20,7 +20,7 @@ const SingleProduct = () => {
     localStorage.setItem("productAdded", JSON.stringify(basket))
 
   useEffect(() => {
-    console.log(basket);
+    // console.log(basket);
   }, [basket]);
 
   useEffect(() => {
