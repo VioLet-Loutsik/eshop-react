@@ -7,3 +7,26 @@
   min-height: 75vh;
   padding-top: 50px;
 }
+.registration-text{
+  text-align: left;
+  
+}
+.registration-icons{
+  padding-top: 20px;
+text-align: left;
+display: flex;
+}
+.shop-card{
+  width: 90px;
+  height: 30px;
+}
+.facebook{
+  color: rgb(20, 63, 205);
+}
+.telegram{
+  color: rgb(23, 117, 199);
+}
+.git{
+  color: rgb(33, 18, 199);
+
+}
