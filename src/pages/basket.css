@@ -33,6 +33,7 @@
   grid-template-columns: 20px 40px 20px;
   /* border: 3px solid rgb(169, 10, 116); */
   margin: auto;
+  margin-top: 10px;
 }
 .block-basket-side {
   -webkit-box-shadow: 0px 10px 13px -7px #000000,
@@ -75,6 +76,22 @@
   top: -1.30rem;
   left: 4rem;
 }
+.block-basket-delete{
+  /* border: 2px solid red; */
+  /* justify-content: center; */
+  display: flex;
+  margin: auto;
+}
+.delete-simbol{
+ margin: auto;
+}
+.block-basket-delete-simbol{
+  width: 17px;
+  height: 17px;
+  margin: 5px;
+  /* border: 2px solid rgb(176, 179, 179); */
+}
+
 .block-basket-email {
   position: relative;
   height: 2.5rem;

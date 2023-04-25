@@ -1,0 +1,9 @@
+.registration_block {
+  max-width: 530px;
+  height: 400px;
+  margin: 50px auto;
+  /* border: 2px solid red; */
+  border-radius: 10%;
+  min-height: 75vh;
+  padding-top: 50px;
+}

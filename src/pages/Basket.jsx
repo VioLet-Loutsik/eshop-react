@@ -1,64 +1,72 @@
 import React from "react";
 import "./basket.css";
 import { useState } from "react";
+import  deleteicon  from "../images/delete.jpg"
 
 // вариант использования темплейта внутри одного файла
-export const BasketTemplate = ({ title, image, price, id }) => {
+export const BasketTemplate = ({ title, image, price, id}) => {
   const [value, setValue] = useState(1);
-  // console.log(value);
-
-  // const handleChange = (event) => {
-  //   setValue(event.target.value.count);
-  // };
-
-    const increase = () => {
-      setValue(value + 1);
-      //  console.log(value);
-    };    
-    const decrease = () => {
-      setValue(value - 1)
-    };
-    const result = (value) => {
-      return value * price;
-    };
-    const deleteProduct = (id) => {
-      setValue((value) => {
-        return value.filter((e) => {return id !== e.id });
-    });
+ 
+  const increase = () => {
+    setValue(value + 1);
   };
-  // console.log('deleted', {id});
-  // console.log(result(value));
+
+  const decrease = () => {
+    setValue(value - 1);
+  };
+
+  const result = (value) => {
+    return value * price;
+  };
+
+  const arrayCart = JSON.parse(localStorage.getItem("productAdded"));
+  const [cart, setCart] =  useState(arrayCart);
   
+  const deleteProduct = (id) => {   
+    console.log('Delete me!!!', id);  
+    const updatedCart = cart.filter((element) => element.id !== id);
+        // console.log(cart); 
+        setCart(updatedCart);
+        console.log(cart); 
+
+  };
+
   return (
     <div className="block-basket-products">
-      <div className="block-basket-image"><img src={image}></img></div>
+      <div className="block-basket-image">
+        <img src={image}></img>
+      </div>
       <div className="block-basket-info">
         <h5>{title}</h5>
-        <p>Price:<b> {price}$</b></p>
+        <p>
+          Price:<b> {price}$</b>
+        </p>
       </div>
       <div className="changer-quantity-block">
         <div className="changer-quantity-price">
-          <p>Total:<b> {result(value)}$</b></p>
+          <p>
+            Total:<b> {result(value)}$</b>
+          </p>
         </div>
         <div className="changer-quantity">
-          <button type="button" className="count_down" onClick={decrease}> - </button>
-          <input type="number"
+          <button type="button" className="count_down" onClick={decrease}>{" "}-{" "}  </button>
+          <input
+            type="number"
             className="changer-quantity-amount"
             value={value}
-            // onChange={handleChange}
           ></input>
-          <button type="button" className="count_up" onClick={increase}> + </button>
+          <button type="button" className="count_up" onClick={increase}>{" "}+{" "}</button>
         </div>
         <div className="block-basket-delete">
-          <div><p>Delete:</p></div>
-          <div className="block-basket-delete-simbol" onClick={deleteProduct}><p>x</p>
-          </div>
+          <div className="block-basket-delete-simbol" onClick={() => deleteProduct(id)}>
+            <img src={deleteicon} className="delete-simbol-image" />              
+          </div>        
+            <p className="delete-simbol">Delete</p>
         </div>
       </div>
     </div>
   );
 };
-// console.log(result(value));
 
 export default function Basket() {
   // const resultBasket = localStorage.getItem("productAdded")
@@ -67,7 +75,15 @@ export default function Basket() {
   const arrayBasket = JSON.parse(localStorage.getItem("productAdded"));
   // console.log(arrayBasket);
   const result = arrayBasket.map((e) => {
-    return <BasketTemplate title={e.title} image={e.image} price={e.price} id={e.id} key={e.id}/>;
+    return (
+      <BasketTemplate
+        title={e.title}
+        image={e.image}
+        price={e.price}
+        id={e.id}
+        key={e.id}
+      />
+    );
   });
 
   return (
@@ -111,6 +127,6 @@ export default function Basket() {
       </div>
     </div>
   );
-}
+};
 
 // export default Basket;
