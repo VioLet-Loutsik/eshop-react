@@ -28,8 +28,8 @@ export const BasketTemplate = ({ title, image, price, id}) => {
         // console.log(cart); 
         setCart(updatedCart);
         console.log(cart); 
-
   };
+  // localStorage.clear()
 
   return (
     <div className="block-basket-products">
