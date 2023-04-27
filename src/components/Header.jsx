@@ -67,7 +67,7 @@ const Header = () => {
 
       <div className="header-group">
         <div className="header-icon-group">
-          <h3>katalog</h3>
+          <h3>Catalog</h3>
         </div>
 
         <div className="header-icon-group">
@@ -83,10 +83,14 @@ const Header = () => {
         <div className="header-right-block">
           <div className="header-icon-group">
             <div className="header-icon">
-              <img src={user} alt="user" />
+              <NavLink to="/login">
+                <img src={user} alt="user" />
+              </NavLink>
             </div>
             <div className="header-name-user">
-              <h5>HI USER</h5>
+              <NavLink to="/login">
+                <h5>HI USER</h5>
+              </NavLink>
             </div>
           </div>
           <div className="header-icon-group">

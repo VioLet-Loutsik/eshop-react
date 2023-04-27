@@ -1,21 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import Button from "react-bootstrap/Button";
 import "./cardTemplate.css";
 // import { NavLink, Link } from "react-bootstrap";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // import DescriptionTemplate from "./DescriptionTemplate";
 
 function CardTemplate({ title, price, image, id, description, category, onSelect }) {
   // const arrayBasket = []; // сначала обьявляем массив
 // console.log(id);
-  const objectBasket = { title, image, price, id };
-  const addProduct = () => {
-    if (onSelect && typeof onSelect === "function") {
-      onSelect(objectBasket);
-    }
-  };
-    // собираем обьект
+  // const objectBasket = { title, image, price, id };
+  // const addProduct = () => {
+  //   if (onSelect && typeof onSelect === "function") {
+  //     onSelect(objectBasket);
+  //   }
+  // };
+    const addProduct = () => {
+      const products = JSON.parse(localStorage.getItem("productAdded") || "[]")
+    products.push({
+      id: id,
+      title: title,
+      image: image,
+      price: price
+    })
+    
+    localStorage.setItem("productAdded", JSON.stringify(products))
+    console.log(products);
+  }
+      // собираем обьект
     // собираем массив из обьектов
     // arrayBasket.push(objectBasket);
     // setArrayBasket((prev) => [...prev, objectBasket]);

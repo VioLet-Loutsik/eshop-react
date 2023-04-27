@@ -8,20 +8,16 @@ const baseURL = "https://fakestoreapi.com/products";
 
 const SingleProduct = () => {
   const [data, setData] = useState([]);
-  const [basket, setBasket] = useState([]);
-  const handleSelect = (item) => {
-    setBasket((prev) => [...prev, item]);
-  };
-// сначала получаем из обьекта строку
-    const stringArray = JSON.stringify(basket);
-    // проверяем
-    localStorage.setItem("productAdded", stringArray);
-    // или такая запись укороченная
-    localStorage.setItem("productAdded", JSON.stringify(basket))
-
-  useEffect(() => {
-    // console.log(basket);
-  }, [basket]);
+  // const [basket, setBasket] = useState([]);
+  // const handleSelect = (item) => {
+  //   setBasket((prev) => [...prev, item]);
+  // };
+  // сначала получаем из обьекта строку
+  // const stringArray = JSON.stringify(basket);
+  // проверяем
+  // localStorage.setItem("productAdded", stringArray);
+  // или такая запись укороченная
+  // localStorage.setItem("productAdded", JSON.stringify(basket));
 
   useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -35,7 +31,7 @@ const SingleProduct = () => {
     .filter((elem) => elem.category === category)
     .map((e) => {
       // console.log(typeof e.id);
-            return (
+      return (
         <CardTemplate
           title={e.title}
           price={e.price}
@@ -44,7 +40,7 @@ const SingleProduct = () => {
           key={e.id}
           category={e.category}
           id={e.id}
-          onSelect={handleSelect}
+          // onSelect={handleSelect}
         />
       );
     });
@@ -55,6 +51,6 @@ const SingleProduct = () => {
       <div className="single-product-block">{newProduct}</div>
     </div>
   );
-}
+};
 
 export default SingleProduct;
