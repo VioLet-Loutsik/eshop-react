@@ -1,12 +1,13 @@
 import React from "react";
 import "./basket.css";
 import { useState } from "react";
-import  deleteicon  from "../images/delete.jpg"
+import deleteicon from "../images/delete.jpg";
+import { useEffect } from "react";
 
 // вариант использования темплейта внутри одного файла
-export const BasketTemplate = ({ title, image, price, id}) => {
+export const BasketTemplate = ({ title, image, price, id }) => {
   const [value, setValue] = useState(1);
- 
+
   const increase = () => {
     setValue(value + 1);
   };
@@ -20,15 +21,28 @@ export const BasketTemplate = ({ title, image, price, id}) => {
   };
 
   const arrayCart = JSON.parse(localStorage.getItem("productAdded"));
-  const [cart, setCart] =  useState(arrayCart);
-  
-  const deleteProduct = (id) => {   
-    console.log('Delete me!!!', id);  
+  const [cart, setCart] = useState(arrayCart);
+
+  // DELETE BUTTON
+  // I variant
+
+  // const deleteProduct = (id) => {
+  //   const updatedCard = cart.filter((element) => {
+  //     return element.id !== id
+  //   })
+  //   setCart(updatedCard);
+  // };
+
+  // II variant
+  const deleteProduct = (id) => {
+    console.log("Delete me!!!", id);
     const updatedCart = cart.filter((element) => element.id !== id);
-        // console.log(cart); 
-        setCart(updatedCart);
-        console.log(cart); 
+    // console.log(cart);
+    setCart(updatedCart);
+    console.log(cart);
+    localStorage.setItem("newlist", updatedCart);
   };
+
   // localStorage.clear()
 
   return (
@@ -49,19 +63,29 @@ export const BasketTemplate = ({ title, image, price, id}) => {
           </p>
         </div>
         <div className="changer-quantity">
-          <button type="button" className="count_down" onClick={decrease}>{" "}-{" "}  </button>
+          <button type="button" className="count_down" onClick={decrease}>
+            {" "}
+            -{" "}
+          </button>
           <input
             type="number"
             className="changer-quantity-amount"
             value={value}
           ></input>
-          <button type="button" className="count_up" onClick={increase}>{" "}+{" "}</button>
+          <button type="button" className="count_up" onClick={increase}>
+            {" "}
+            +{" "}
+          </button>
         </div>
         <div className="block-basket-delete">
-          <div className="block-basket-delete-simbol" onClick={() => deleteProduct(id)}>
-            <img src={deleteicon} className="delete-simbol-image" />              
-          </div>        
-            <p className="delete-simbol">Delete</p>
+          <div
+            className="block-basket-delete-simbol"
+            onClick={() => deleteProduct(id)}
+          >
+            <button onClick={() => deleteProduct(id)}>Delete</button>
+            <img src={deleteicon} className="delete-simbol-image" />
+          </div>
+          {/* <p className="delete-simbol">Delete</p> */}
         </div>
       </div>
     </div>
@@ -127,6 +151,6 @@ export default function Basket() {
       </div>
     </div>
   );
-};
+}
 
 // export default Basket;
